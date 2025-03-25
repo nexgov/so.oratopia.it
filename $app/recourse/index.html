@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servizi Online | Oratopia</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.14.0/dist/js/bootstrap-italia.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.14.0/dist/css/bootstrap-italia.min.css">
+    <link rel="stylesheet" href="https://www.comune.rivoli.to.it/extension/openpa_bootstrapitalia/design/bootstrapitalia2/stylesheets/rivoli.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+          img {
+    width: 40vw; /* 40% della larghezza della viewport */
+    max-width: 400px; /* Limite massimo di larghezza */
+    height: auto; /* Mantiene le proporzioni */
+    display: block; /* Evita spaziature indesiderate */
+    margin: 0 auto; /* Centra l'immagine nella pagina */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+</style>
+</head>
+<body>
+<header class="it-header-wrapper">
+  <div class="it-header-slim-wrapper">
+    <div class="container-xxl">
+      <div class="row">
+        <div class="col-12">
+          <div class="it-header-slim-wrapper-content">
+            <a class="d-none d-lg-block navbar-brand" href="https://arenagiovani.it">Arena Giovni</a>
+            <div class="nav-mobile">
+              <nav aria-label="Navigazione secondaria">
+                <a class="it-opener d-lg-none" data-bs-toggle="collapse" href="#menuC1" role="button" aria-expanded="false" aria-controls="menuC1">
+                  <span>Ente appartenenza</span>
+                  <svg class="icon" aria-hidden="true"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-expand"></use></svg>
+                </a>
+                <div class="link-list-wrapper collapse" id="menuC1">
+                  <ul class="link-list">
+                    <li><a class="dropdown-item list-item" href="https://gabrieljones.it">Gabriel Matteo Jones</a></li>
+                    <li><a class="dropdown-item list-item" href="https://mail.zoho.eu/">Accesso Email aziendale</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+            <div class="it-header-slim-right-zone">
+              <div class="it-access-top-wrapper">
+                <a class="btn btn-primary btn-sm" href="." id="welcome-message">Benvenuto!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="it-nav-wrapper">
+    <div class="it-header-center-wrapper">
+      <div class="container-xxl">
+        <div class="row">
+          <div class="col-12">
+            <div class="it-header-center-content-wrapper">
+              <div class="it-brand-wrapper">
+                <a href="#">
+                <div class="avatar avatar-red size-xl">
+                <p aria-hidden="true">18F</p>
+                <span class="visually-hidden">Oratopia</span>
+                    </div>
+                    <div class="it-brand-text">
+                    <div class="it-brand-title">Oratopia</div>
+                    <div class="it-brand-tagline d-none d-md-block">Servizi Online</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (user) {
+            document.getElementById("welcome-message").textContent = "Benvenuto, " + user.user_metadata.full_name + "!";
+          }
+        });
+    
+        window.netlifyIdentity.on("login", user => {
+          document.getElementById("welcome-message").textContent = "Benvenuto, " + user.user_metadata.full_name + "!";
+        });
+      }
+    </script>
+    <script>
+        netlifyIdentity.on('init', user => {
+            if (!user) {
+                window.location.href = "/login/";
+            } else {
+                document.getElementById('message').innerText = `Ciao, ${user.user_metadata.full_name}! Contenuto protetto visibile.`;
+            }
+        });
+        
+        netlifyIdentity.on('logout', () => {
+            window.location.href = "/login/";
+        });
+    </script>
+</body>
+</html>
