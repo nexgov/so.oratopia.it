@@ -25,7 +25,7 @@ body {
       <div class="row">
         <div class="col-12">
           <div class="it-header-slim-wrapper-content">
-            <a class="d-none d-lg-block navbar-brand" href="#">Ente appartenenza</a>
+            <a class="d-none d-lg-block navbar-brand" href="https://arenagiovani.it">Arena Giovni</a>
             <div class="nav-mobile">
               <nav aria-label="Navigazione secondaria">
                 <a class="it-opener d-lg-none" data-bs-toggle="collapse" href="#menuC1" role="button" aria-expanded="false" aria-controls="menuC1">
@@ -61,7 +61,7 @@ body {
                 </div>
               </div>
               <div class="it-access-top-wrapper">
-                <a class="btn btn-primary btn-sm" href="#">Accedi</a>
+                <a class="btn btn-primary btn-sm" href="." id="welcome-message">Benvenuto!</a>
               </div>
             </div>
           </div>
@@ -77,8 +77,11 @@ body {
             <div class="it-header-center-content-wrapper">
               <div class="it-brand-wrapper">
                 <a href="#">
-                  <svg class="icon" aria-hidden="true"><use href="/bootstrap-italia/dist/svg/sprites.svg#it-pa"></use></svg>
-                  <div class="it-brand-text">
+                <div class="avatar avatar-red size-xl">
+                <p aria-hidden="true">18F</p>
+                <span class="visually-hidden">Oratopia</span>
+                    </div>
+                    <div class="it-brand-text">
                     <div class="it-brand-title">Oratopia</div>
                     <div class="it-brand-tagline d-none d-md-block">Servizi Online</div>
                   </div>
@@ -159,7 +162,19 @@ body {
                         
     <p id="message">Devi accedere per vedere il contenuto.</p>
     <button onclick="netlifyIdentity.logout()">Esci</button>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (user) {
+            document.getElementById("welcome-message").textContent = "Benvenuto, " + user.user_metadata.full_name + "!";
+          }
+        });
     
+        window.netlifyIdentity.on("login", user => {
+          document.getElementById("welcome-message").textContent = "Benvenuto, " + user.user_metadata.full_name + "!";
+        });
+      }
+    </script>
     <script>
         netlifyIdentity.on('init', user => {
             if (!user) {
