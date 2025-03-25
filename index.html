@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina di Login</title>
+    <title>Login con Netlify Identity</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,21 +62,26 @@
 
     <div class="login-container">
         <h2>Accedi al tuo account</h2>
-        <form action="#" method="POST">
-            <div class="input-group">
-                <label for="username">Nome Utente</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn">Accedi</button>
-        </form>
+        <button class="btn" id="login-button">Accedi</button>
         <div class="footer">
             <p><a href="#">Password dimenticata?</a></p>
         </div>
     </div>
+
+    <script>
+        // Inizializza Netlify Identity
+        if (window.netlifyIdentity) {
+            netlifyIdentity.on('login', function(user) {
+                // Dopo il login, reindirizza alla pagina $app
+                window.location.href = '$app';
+            });
+
+            // Aggiungi un listener al bottone per attivare il login
+            document.getElementById('login-button').addEventListener('click', function() {
+                netlifyIdentity.open();
+            });
+        }
+    </script>
 
 </body>
 </html>
