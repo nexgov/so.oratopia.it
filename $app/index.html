@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Protetta</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h2>Benvenuto nella pagina protetta!</h2>
+        <p>Questa è una pagina che puoi vedere solo se sei autenticato. Se non sei loggato, sarai reindirizzato alla pagina di login.</p>
+        <button class="btn" id="logout-button">Esci</button>
+    </div>
+
+    <script>
+        // Inizializza Netlify Identity
+        if (window.netlifyIdentity) {
+            // Controlla se l'utente è loggato
+            const user = netlifyIdentity.currentUser();
+            if (!user) {
+                // Se l'utente non è loggato, reindirizzalo alla pagina di login
+                window.location.href = '/login.html';  // Puoi cambiare il percorso in base alla tua configurazione
+            }
+
+            // Mostra il nome utente
+            const content = document.querySelector('.content');
+            const welcomeMessage = document.createElement('p');
+            welcomeMessage.textContent = `Ciao, ${user.user_metadata.full_name}!`;
+            content.appendChild(welcomeMessage);
+
+            // Gestisci il logout
+            document.getElementById('logout-button').addEventListener('click', function() {
+                netlifyIdentity.logout();
+                window.location.href = '/login.html'; // Reindirizza alla pagina di login dopo il logout
+            });
+        }
+    </script>
+
+</body>
+</html>
